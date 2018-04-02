@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: TMurder
+  port: 8080
+endpoints:
+  restart:
+    enabled: true
+  shutdown:
+    enabled: true
+  health:
+    sensitive: false
+management:
+  security:
+    enabled: false
+server:
+  context-path: /index
