@@ -13,9 +13,14 @@ public class MongoDbProperties {
 	private String password;
 	private String host = "localhost";
 	private int port = 27017;
-	private String database;
+	private String database = "bixy";
+	private String url = "mongodb://localhost:27017,localhost:27015,localhost:27016/bixy?replicaSet=TestReplicaSet";
 
+	// replicaSet url
+	//uri: mongodb://10.62.100.192:27017,10.62.100.193:27017,10.62.100.19:27017/?replicaSet=online
 	public String getMongoDbUri() {
+		if(url!=null)
+			return url;
 		String mongodburi = null;
 		if (user == null || password == null) {
 			mongodburi = String.format("mongodb://%s:%d/%s", host, port, database);
