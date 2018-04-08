@@ -11,26 +11,11 @@ import org.wctf.quartz.listener.ExceptionToDBSchedulerListener;
 
 public class QuartzDaemon {
 	private static final Logger log = LoggerFactory.getLogger(QuartzDaemon.class);
-	/**
-	 * 启动
-	 */
-	private final static String DAEMON_START = "start";
-	/**
-	 * 停止
-	 */
-	private final static String DAEMON_STOP = "stop";
-	/**
-	 * 暂停
-	 */
-	private final static String DAEMON_PAUSE = "pause";
-	/**
-	 * 继续
-	 */
-	private final static String DEAMON_RESUME = "resume";
 
-	/**
-	 * 调度实例id
-	 */
+	private final static String DAEMON_START = "start";
+	private final static String DAEMON_STOP = "stop";
+	private final static String DAEMON_PAUSE = "pause";
+	private final static String DEAMON_RESUME = "resume";
 	private final static String INSTANCEID = "org.quartz.scheduler.instanceId";
 
 	public static void main(String[] args) {
