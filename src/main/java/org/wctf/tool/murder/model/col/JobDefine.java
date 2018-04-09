@@ -6,72 +6,284 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "jobdefine")
 public class JobDefine {
-	private Schedule schedule;
+	private Job job;
+	private List<Trigger> trigger;
 
-	public Schedule getSchedule() {
-		return schedule;
+	public Job getJob() {
+		return job;
 	}
 
-	public void setSchedule(Schedule schedule) {
-		this.schedule = schedule;
+	public void setJob(Job job) {
+		this.job = job;
 	}
 
-	private static class Schedule {
-		Job job;
-		List<Trigger> trigger;
+	public List<Trigger> getTrigger() {
+		return trigger;
 	}
 
-	private static class Job {
-		String name;
-		String group;
-		String description;
-		boolean durable;
-		boolean recover;
-		JobDataMap jobDataMap;
+	public void setTrigger(List<Trigger> trigger) {
+		this.trigger = trigger;
 	}
 
-	private static class JobDataMap {
-		List<Entry> entry;
+	public static class Job {
+		private String name;
+		private String group;
+		private String description;
+		private boolean durable;
+		private boolean recover;
+		private JobDataMap jobDataMap;
+
+		public String getName() {
+			return name;
+		}
+
+		public void setName(String name) {
+			this.name = name;
+		}
+
+		public String getGroup() {
+			return group;
+		}
+
+		public void setGroup(String group) {
+			this.group = group;
+		}
+
+		public String getDescription() {
+			return description;
+		}
+
+		public void setDescription(String description) {
+			this.description = description;
+		}
+
+		public boolean isDurable() {
+			return durable;
+		}
+
+		public void setDurable(boolean durable) {
+			this.durable = durable;
+		}
+
+		public boolean isRecover() {
+			return recover;
+		}
+
+		public void setRecover(boolean recover) {
+			this.recover = recover;
+		}
+
+		public JobDataMap getJobDataMap() {
+			return jobDataMap;
+		}
+
+		public void setJobDataMap(JobDataMap jobDataMap) {
+			this.jobDataMap = jobDataMap;
+		}
+
 	}
 
-	private static class Entry {
-		String key;
-		String value;
+	public static class JobDataMap {
+		private List<Entry> entry;
+
+		public List<Entry> getEntry() {
+			return entry;
+		}
+
+		public void setEntry(List<Entry> entry) {
+			this.entry = entry;
+		}
+
 	}
 
-	private static class Trigger {
-		Cron cron;
-		DateInterval dateInterval;
-		Simple simple;
+	public static class Entry {
+		private String key;
+		private String value;
+
+		public String getKey() {
+			return key;
+		}
+
+		public void setKey(String key) {
+			this.key = key;
+		}
+
+		public String getValue() {
+			return value;
+		}
+
+		public void setValue(String value) {
+			this.value = value;
+		}
+
 	}
 
-	private static class TriggerBase {
-		String name;
-		String group;
-		String jobName;
-		String jobGroup;
-		String description;
-		String startTime;
-		String endTime;
+	public static class Trigger {
+		private String name;
+		private String group;
+		private String jobName;
+		private String jobGroup;
+		private String description;
+		private String startTime;
+		private String endTime;
+
+		public String getName() {
+			return name;
+		}
+
+		public void setName(String name) {
+			this.name = name;
+		}
+
+		public String getGroup() {
+			return group;
+		}
+
+		public void setGroup(String group) {
+			this.group = group;
+		}
+
+		public String getJobName() {
+			return jobName;
+		}
+
+		public void setJobName(String jobName) {
+			this.jobName = jobName;
+		}
+
+		public String getJobGroup() {
+			return jobGroup;
+		}
+
+		public void setJobGroup(String jobGroup) {
+			this.jobGroup = jobGroup;
+		}
+
+		public String getDescription() {
+			return description;
+		}
+
+		public void setDescription(String description) {
+			this.description = description;
+		}
+
+		public String getStartTime() {
+			return startTime;
+		}
+
+		public void setStartTime(String startTime) {
+			this.startTime = startTime;
+		}
+
+		public String getEndTime() {
+			return endTime;
+		}
+
+		public void setEndTime(String endTime) {
+			this.endTime = endTime;
+		}
+
 	}
 
-	private static class Cron extends TriggerBase {
-		String timeZone = "";
-		String misfireInstruction;
-		String cronExpression;
-		JobDataMap jobDataMap;
+	public static class Cron extends Trigger {
+		private String timeZone = "";
+		private String misfireInstruction;
+		private String cronExpression;
+		private JobDataMap jobDataMap;
+
+		public String getTimeZone() {
+			return timeZone;
+		}
+
+		public void setTimeZone(String timeZone) {
+			this.timeZone = timeZone;
+		}
+
+		public String getMisfireInstruction() {
+			return misfireInstruction;
+		}
+
+		public void setMisfireInstruction(String misfireInstruction) {
+			this.misfireInstruction = misfireInstruction;
+		}
+
+		public String getCronExpression() {
+			return cronExpression;
+		}
+
+		public void setCronExpression(String cronExpression) {
+			this.cronExpression = cronExpression;
+		}
+
+		public JobDataMap getJobDataMap() {
+			return jobDataMap;
+		}
+
+		public void setJobDataMap(JobDataMap jobDataMap) {
+			this.jobDataMap = jobDataMap;
+		}
+
 	}
 
-	private static class DateInterval extends TriggerBase {
-		String repeatInterval;
-		String repeatIntervalUnit;
-		JobDataMap jobDataMap;
+	public static class DateInterval extends Trigger {
+		private String repeatInterval;
+		private String repeatIntervalUnit;
+		private JobDataMap jobDataMap;
+
+		public String getRepeatInterval() {
+			return repeatInterval;
+		}
+
+		public void setRepeatInterval(String repeatInterval) {
+			this.repeatInterval = repeatInterval;
+		}
+
+		public String getRepeatIntervalUnit() {
+			return repeatIntervalUnit;
+		}
+
+		public void setRepeatIntervalUnit(String repeatIntervalUnit) {
+			this.repeatIntervalUnit = repeatIntervalUnit;
+		}
+
+		public JobDataMap getJobDataMap() {
+			return jobDataMap;
+		}
+
+		public void setJobDataMap(JobDataMap jobDataMap) {
+			this.jobDataMap = jobDataMap;
+		}
+
 	}
 
-	private static class Simple extends TriggerBase {
-		String repeatInterval;
-		String repeatCount;
-		JobDataMap jobDataMap;
+	public static class Simple extends Trigger {
+		private String repeatInterval;
+		private String repeatCount;
+		private JobDataMap jobDataMap;
+
+		public String getRepeatInterval() {
+			return repeatInterval;
+		}
+
+		public void setRepeatInterval(String repeatInterval) {
+			this.repeatInterval = repeatInterval;
+		}
+
+		public String getRepeatCount() {
+			return repeatCount;
+		}
+
+		public void setRepeatCount(String repeatCount) {
+			this.repeatCount = repeatCount;
+		}
+
+		public JobDataMap getJobDataMap() {
+			return jobDataMap;
+		}
+
+		public void setJobDataMap(JobDataMap jobDataMap) {
+			this.jobDataMap = jobDataMap;
+		}
 
 	}
 }
