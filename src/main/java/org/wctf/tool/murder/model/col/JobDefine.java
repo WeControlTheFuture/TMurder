@@ -1,13 +1,23 @@
 package org.wctf.tool.murder.model.col;
 
 import java.util.List;
+import java.util.Map;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "jobdefine")
 public class JobDefine {
+	@Id
+	private String _id;
+
 	private Job job;
 	private List<Trigger> trigger;
+
+	public JobDefine(Job job) {
+		this.job = job;
+		this._id = job.getGroup() + "_" + job.getName();
+	}
 
 	public Job getJob() {
 		return job;
@@ -15,6 +25,7 @@ public class JobDefine {
 
 	public void setJob(Job job) {
 		this.job = job;
+
 	}
 
 	public List<Trigger> getTrigger() {
@@ -29,9 +40,9 @@ public class JobDefine {
 		private String name;
 		private String group;
 		private String description;
-		private boolean durable;
+		private String jobClass;
 		private boolean recover;
-		private JobDataMap jobDataMap;
+		private Map<String, String> jobDataMap;
 
 		public String getName() {
 			return name;
@@ -57,12 +68,12 @@ public class JobDefine {
 			this.description = description;
 		}
 
-		public boolean isDurable() {
-			return durable;
+		public String getJobClass() {
+			return jobClass;
 		}
 
-		public void setDurable(boolean durable) {
-			this.durable = durable;
+		public void setJobClass(String jobClass) {
+			this.jobClass = jobClass;
 		}
 
 		public boolean isRecover() {
@@ -73,47 +84,12 @@ public class JobDefine {
 			this.recover = recover;
 		}
 
-		public JobDataMap getJobDataMap() {
+		public Map<String, String> getJobDataMap() {
 			return jobDataMap;
 		}
 
-		public void setJobDataMap(JobDataMap jobDataMap) {
+		public void setJobDataMap(Map<String, String> jobDataMap) {
 			this.jobDataMap = jobDataMap;
-		}
-
-	}
-
-	public static class JobDataMap {
-		private List<Entry> entry;
-
-		public List<Entry> getEntry() {
-			return entry;
-		}
-
-		public void setEntry(List<Entry> entry) {
-			this.entry = entry;
-		}
-
-	}
-
-	public static class Entry {
-		private String key;
-		private String value;
-
-		public String getKey() {
-			return key;
-		}
-
-		public void setKey(String key) {
-			this.key = key;
-		}
-
-		public String getValue() {
-			return value;
-		}
-
-		public void setValue(String value) {
-			this.value = value;
 		}
 
 	}
@@ -189,7 +165,7 @@ public class JobDefine {
 		private String timeZone = "";
 		private String misfireInstruction;
 		private String cronExpression;
-		private JobDataMap jobDataMap;
+		private Map<String, String> jobDataMap;
 
 		public String getTimeZone() {
 			return timeZone;
@@ -215,11 +191,11 @@ public class JobDefine {
 			this.cronExpression = cronExpression;
 		}
 
-		public JobDataMap getJobDataMap() {
+		public Map<String, String> getJobDataMap() {
 			return jobDataMap;
 		}
 
-		public void setJobDataMap(JobDataMap jobDataMap) {
+		public void setJobDataMap(Map<String, String> jobDataMap) {
 			this.jobDataMap = jobDataMap;
 		}
 
@@ -228,7 +204,7 @@ public class JobDefine {
 	public static class DateInterval extends Trigger {
 		private String repeatInterval;
 		private String repeatIntervalUnit;
-		private JobDataMap jobDataMap;
+		private Map<String, String> jobDataMap;
 
 		public String getRepeatInterval() {
 			return repeatInterval;
@@ -246,11 +222,11 @@ public class JobDefine {
 			this.repeatIntervalUnit = repeatIntervalUnit;
 		}
 
-		public JobDataMap getJobDataMap() {
+		public Map<String, String> getJobDataMap() {
 			return jobDataMap;
 		}
 
-		public void setJobDataMap(JobDataMap jobDataMap) {
+		public void setJobDataMap(Map<String, String> jobDataMap) {
 			this.jobDataMap = jobDataMap;
 		}
 
@@ -259,7 +235,7 @@ public class JobDefine {
 	public static class Simple extends Trigger {
 		private String repeatInterval;
 		private String repeatCount;
-		private JobDataMap jobDataMap;
+		private Map<String, String> jobDataMap;
 
 		public String getRepeatInterval() {
 			return repeatInterval;
@@ -277,11 +253,11 @@ public class JobDefine {
 			this.repeatCount = repeatCount;
 		}
 
-		public JobDataMap getJobDataMap() {
+		public Map<String, String> getJobDataMap() {
 			return jobDataMap;
 		}
 
-		public void setJobDataMap(JobDataMap jobDataMap) {
+		public void setJobDataMap(Map<String, String> jobDataMap) {
 			this.jobDataMap = jobDataMap;
 		}
 

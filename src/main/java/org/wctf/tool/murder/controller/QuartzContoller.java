@@ -16,4 +16,5 @@ public class QuartzContoller {
 	public String runningstatus() {
 		return "quartz/running-status";
 	}
+	
 }

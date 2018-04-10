@@ -1,4 +1,4 @@
-package org.wctf.tool.murder.conf;
+package org.wctf.tool.murder.common.conf;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

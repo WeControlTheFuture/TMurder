@@ -3,7 +3,6 @@ package org.wctf.quartz.ex.mongo;
 import org.quartz.JobDetail;
 import org.quartz.Scheduler;
 import org.quartz.SchedulerException;
-import org.quartz.Trigger;
 import org.quartz.plugins.SchedulerPluginWithUserTransactionSupport;
 import org.quartz.spi.ClassLoadHelper;
 
@@ -20,7 +19,11 @@ public class MongoSchedulingDataProcessorPlugin extends SchedulerPluginWithUserT
 		MongoJobChanged mongoJobChanged = new MongoJobChanged(this);
 	}
 
-	public void reScheduleJob(JobDetail jobDetail, Trigger trigger) throws SchedulerException {
-		scheduler.scheduleJob(jobDetail, trigger);
+	public void reScheduleJob(JobDetail jobDetail){
+		try {
+			scheduler.addJob(jobDetail, true);
+		} catch (SchedulerException e) {
+			e.printStackTrace();
+		}
 	}
 }

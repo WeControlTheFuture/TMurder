@@ -1,4 +1,4 @@
-package org.wctf.tool.murder.conf;
+package org.wctf.tool.murder.common.conf;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
