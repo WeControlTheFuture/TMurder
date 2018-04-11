@@ -1,5 +1,4 @@
-<div class="modal fade" id="jobCreateModal" tabindex="-1" role="dialog"
-	aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="jobCreateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -8,24 +7,19 @@
 			</div>
 			<div class="modal-body">
 				<div class="form-group">
-					<label>Job Name</label> <input class="form-control" id="jobName"
-						placeholder="Enter Job Name">
+					<label>Job Name</label> <input v-model="name" class="form-control" id="jobName" placeholder="Enter Job Name" >
 				</div>
 				<div class="form-group">
-					<label>Job Group</label> <input class="form-control" id="jobGroup"
-						placeholder="Enter Job Group">
+					<label>Job Group</label> <input v-model="group" class="form-control" id="jobGroup" placeholder="Enter Job Group">
 				</div>
 				<div class="form-group">
-					<label>Job Class</label> <input class="form-control" id="jobClass"
-						placeholder="Enter Job Class">
+					<label>Job Class</label> <input v-model="jobClass" class="form-control" id="jobClass" placeholder="Enter Job Class">
 				</div>
 				<div class="form-group">
-					<label>Job Description</label> <input class="form-control"
-						id="jobDesc" placeholder="Enter Job Description">
+					<label>Job Description</label> <input v-model="description" class="form-control" id="jobDesc" placeholder="Enter Job Description">
 				</div>
 				<div class="form-group">
-					<label class="checkbox-inline"> <input type="checkbox"
-						id="jobRecover"> Recover
+					<label class="checkbox-inline"> <input type="checkbox" id="jobRecover"> Recover
 					</label>
 				</div>
 				<div class="form-group">
@@ -40,20 +34,17 @@
 						</thead>
 						<tbody>
 							<tr>
-								<td><input class="form-control" id="key"
-									placeholder="Enter Key"></td>
-								<td><input class="form-control" id="value"
-									placeholder="Enter Value"></td>
-								<td></td>
+								<td><input class="form-control" id="key" placeholder="Enter Key"></td>
+								<td><input class="form-control" id="value" placeholder="Enter Value"></td>
+								<td><a class="btn btn-success" @click="addJobParam" href="#">Add </a> <a class="btn btn-danger" href="#"> <i class="glyphicon glyphicon-trash icon-white"></i>
+								</a></td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
 			</div>
 			<div class="modal-footer">
-				<a href="#" class="btn btn-default" data-dismiss="modal">Close</a> <a
-					href="#" class="btn btn-primary btn-job-submmit"
-					data-dismiss="modal">Submmit</a>
+				<a href="#" class="btn btn-default" data-dismiss="modal">Close</a> <a href="#" class="btn btn-primary btn-job-submmit" data-dismiss="modal">Submmit</a>
 			</div>
 		</div>
 	</div>

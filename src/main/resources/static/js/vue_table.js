@@ -14,6 +14,7 @@ $(document).ready(function() {
 				status : 'running'
 			} ]
 		}
+		
 	});
 
 	var triggerDefine = new Vue({
@@ -44,5 +45,12 @@ $(document).ready(function() {
 			recover : true,
 			jobDataMap : {}
 		}
+	,
+	methods: {
+		addJobParam:function(){
+			
+		}
+	
+	}
 	});
 })
