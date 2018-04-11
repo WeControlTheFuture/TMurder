@@ -1,0 +1,60 @@
+<div class="modal fade" id="jobCreateModal" tabindex="-1" role="dialog"
+	aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">Close</button>
+				<h3>Create New Quartz Job</h3>
+			</div>
+			<div class="modal-body">
+				<div class="form-group">
+					<label>Job Name</label> <input class="form-control" id="jobName"
+						placeholder="Enter Job Name">
+				</div>
+				<div class="form-group">
+					<label>Job Group</label> <input class="form-control" id="jobGroup"
+						placeholder="Enter Job Group">
+				</div>
+				<div class="form-group">
+					<label>Job Class</label> <input class="form-control" id="jobClass"
+						placeholder="Enter Job Class">
+				</div>
+				<div class="form-group">
+					<label>Job Description</label> <input class="form-control"
+						id="jobDesc" placeholder="Enter Job Description">
+				</div>
+				<div class="form-group">
+					<label class="checkbox-inline"> <input type="checkbox"
+						id="jobRecover"> Recover
+					</label>
+				</div>
+				<div class="form-group">
+					<label>Parameters</label>
+					<table class="table table-bordered table-striped responsive">
+						<thead>
+							<tr>
+								<th>Key</th>
+								<th>Value</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><input class="form-control" id="key"
+									placeholder="Enter Key"></td>
+								<td><input class="form-control" id="value"
+									placeholder="Enter Value"></td>
+								<td></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<a href="#" class="btn btn-default" data-dismiss="modal">Close</a> <a
+					href="#" class="btn btn-primary btn-job-submmit"
+					data-dismiss="modal">Submmit</a>
+			</div>
+		</div>
+	</div>
+</div>
