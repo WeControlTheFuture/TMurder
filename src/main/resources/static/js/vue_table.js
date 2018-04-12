@@ -14,7 +14,7 @@ $(document).ready(function() {
 				status : 'running'
 			} ]
 		}
-		
+
 	});
 
 	var triggerDefine = new Vue({
@@ -38,19 +38,46 @@ $(document).ready(function() {
 	var createJob = new Vue({
 		el : '#jobCreateModal',
 		data : {
-			name : '',
-			group : '',
-			jobClass : '',
-			description : '',
+			name : 'bixy',
+			group : 'prod',
+			jobClass : 'org.wctf.quartz.job.NoOpJob',
+			description : 'just for test',
 			recover : true,
-			jobDataMap : {}
+			jobDataMap : [{
+				key : '1',
+				value : 'a'
+			},{
+				key : '2',
+				value : 'b'
+			}]
+		},
+		methods : {
+			addJobParam : function() {
+				this.jobDataMap.push({
+					key : '',
+					value : ''
+				});
+			},
+			delParam : function(index) {
+				this.jobDataMap.splice(index, 1);
+			},
+			saveJobDefine : function() {
+				console.log(this);
+				console.log(this.$data);
+				$.ajax({
+					type : "POST",
+					url : "/quartz/createjob",
+					contentType: "application/json;charset=UTF-8",
+					data : JSON.stringify(this.$data),
+					success : function(data) {
+						alert(data);
+					},
+					error : function() {
+						alert("error");
+					}
+
+				});
+			}
 		}
-	,
-	methods: {
-		addJobParam:function(){
-			
-		}
-	
-	}
 	});
 })
